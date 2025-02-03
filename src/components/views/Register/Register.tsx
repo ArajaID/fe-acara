@@ -32,9 +32,9 @@ console.log(errors.root)
                         <Link href="/auth/login" className="font-semibold text-danger-400">Login here</Link>
                     </p>
 
-                    {/* {errors.root && (
+                    {errors.root && (
                         <p className="mb-2 font-medium text-danger">{errors?.root?.message}</p>
-                    )} */}
+                    )}
 
                     <form className={cn("flex flex-col w-80", Object.keys(errors).length > 0 ? "gap-2" : "gap-4")} onSubmit={handleSubmit(handleRegister)}>
                         <Controller name="fullName" control={control} render={({field}) => (
