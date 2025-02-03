@@ -10,7 +10,7 @@ const RegisterSuccess = () => {
         <div className="flex flex-col justify-center gap-10 p-4">
             <div className="flex flex-col items-center justify-center gap-10">
                 <Image src="/images/general/logo.svg" alt="logo" width={180} height={180} />
-                <Image src="/images/illustrations/success.svg" alt="success" width={300} height={300} />
+                <Image src="/images/illustrations/email-send.svg" alt="success" width={300} height={300} />
             </div>
 
             <div className="flex flex-col items-center gap-2 text-center">
