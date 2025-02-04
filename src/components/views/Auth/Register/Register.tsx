@@ -17,8 +17,6 @@ const Register = () => {
         errors 
     } = useRegister();
     
-console.log(errors.root)
-
     return (
         <div className="flex flex-col items-center justify-center w-full gap-10 lg:flex-row lg:gap-20">
             <div className="flex flex-col items-center justify-center w-full gap-10 lg:w-1/3">
@@ -27,8 +25,8 @@ console.log(errors.root)
             </div>
             <Card>
                 <CardBody className="p-5 lg:p-8">
-                    <h2 className="text-xl font-bold text-danger-500">Create Account</h2>
-                    <p className="mb-4 text-small">Have an account? &nbsp;
+                    <h2 className="text-2xl font-bold text-danger-500">Create Account</h2>
+                    <p className="mb-4 mt-2 text-small">Have an account? &nbsp;
                         <Link href="/auth/login" className="font-semibold text-danger-400">Login here</Link>
                     </p>
 
