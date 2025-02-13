@@ -92,7 +92,7 @@ const InputFile = (props: PropTypes) => {
                 </div>
                 <Button 
                     isIconOnly
-                    onPress={onDelete} 
+                    onClick={onDelete} 
                     disabled={isDeleting}
                     className="absolute right-2 top-2 flex h-9 w-9 items-center justify-center rounded bg-danger-100">
                     { 

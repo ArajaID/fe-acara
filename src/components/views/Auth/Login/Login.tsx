@@ -60,7 +60,7 @@ const Login = () => {
                                     <button 
                                         className="focus:outline-none"
                                         type="button"
-                                        onPress={toggleVisibility}
+                                        onClick={toggleVisibility}
                                     
                                     >
                                         {isVisible ? 

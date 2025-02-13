@@ -58,7 +58,7 @@ const DashboardLayoutSidebar = (props: PropTypes) => {
                 </Listbox>
             </div>
             <div className="flex items-center p-1 ">
-                <Button color="danger" fullWidth variant="light" className="flex justify-start rounded-lg px-2 py-1.5" size="lg" onPress={() => signOut()}><CiLogout /> Logout</Button>
+                <Button color="danger" fullWidth variant="light" className="flex justify-start rounded-lg px-2 py-1.5" size="lg" onClick={() => signOut()}><CiLogout /> Logout</Button>
             </div>
         </div>
     )

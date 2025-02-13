@@ -64,7 +64,7 @@ const DataTable = (props: PropTypes) => {
                 onClear={onClearSearch}
                 onChange={onChangeSearch}
                 />
-                { buttonTopContentLabel && <Button color="danger" onPress={onClickButtonTopContent}>
+                { buttonTopContentLabel && <Button color="danger" onClick={onClickButtonTopContent}>
                     { buttonTopContentLabel }
                 </Button> }
             </div>

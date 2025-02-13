@@ -82,7 +82,7 @@ const Register = () => {
                                     <button 
                                         className="focus:outline-none"
                                         type="button"
-                                        onPress={() => handleVisiblePassword("password")}
+                                        onClick={() => handleVisiblePassword("password")}
                                     
                                     >
                                         {visiblePassword.password ? 
@@ -107,7 +107,7 @@ const Register = () => {
                                     <button 
                                         className="focus:outline-none"
                                         type="button"
-                                        onPress={() => handleVisiblePassword("confirmPassword")}
+                                        onClick={() => handleVisiblePassword("confirmPassword")}
                                     
                                     >
                                         {visiblePassword.confirmPassword ? 
