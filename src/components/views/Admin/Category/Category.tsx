@@ -15,6 +15,7 @@ import { COLUMN_LISTS_CATEGORY } from "./Category.constant";
 import useCategory from "./useCategory";
 import InputFile from "@/components/ui/InputFile";
 import AddCategoryModal from "./AddCategoryModal";
+import DeleteCategoryModal from "./DeleteCategoryModal";
 
 const Category = () => {
     const { push, isReady, query } = useRouter();
@@ -31,9 +32,13 @@ const Category = () => {
         handleChangePage,
         handleSearch,
         handleClearSearch,
+        
+        selectedId, 
+        setSelectedId,
     } = useCategory();
 
     const addCategoryModal = useDisclosure();
+    const deleteCategoryModal = useDisclosure();
 
     useEffect(() => {
         if(isReady) {
@@ -60,13 +65,18 @@ const Category = () => {
                             </DropdownTrigger>
                             <DropdownMenu>
                                 <DropdownItem 
-                                key="detail-category-button"
-                                onClick={() => push(`/admin/category/${category._id}`)}>Detail Category
+                                    key="detail-category-button"
+                                    onClick={() => push(`/admin/category/${category._id}`)}
+                                    >Detail Category
                                 </DropdownItem>
                                 <DropdownItem 
-                                key="delete-category"
-                                className="text-danger-500"
-                                >Delete
+                                    key="delete-category"
+                                    className="text-danger-500"
+                                    onPress={() => {
+                                        setSelectedId(`${category._id}`);
+                                        deleteCategoryModal.onOpen();
+                                    }}
+                                    >Delete
                                 </DropdownItem>
                             </DropdownMenu>
                         </Dropdown>  
@@ -98,6 +108,12 @@ const Category = () => {
                     />
             )}
             <AddCategoryModal refetchCategory={refetchCategory} {...addCategoryModal} />
+            <DeleteCategoryModal 
+                {...deleteCategoryModal}
+                refetchCategory={refetchCategory} 
+                selectedId={selectedId} 
+                setSelectedId={setSelectedId}
+            />
         </section>
     )
 }
