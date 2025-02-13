@@ -4,7 +4,8 @@ import {
     Dropdown, 
     DropdownItem, 
     DropdownMenu, 
-    DropdownTrigger 
+    DropdownTrigger, 
+    useDisclosure
 } from "@nextui-org/react";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -13,6 +14,7 @@ import { CiMenuKebab } from "react-icons/ci";
 import { COLUMN_LISTS_CATEGORY } from "./Category.constant";
 import useCategory from "./useCategory";
 import InputFile from "@/components/ui/InputFile";
+import AddCategoryModal from "./AddCategoryModal";
 
 const Category = () => {
     const { push, isReady, query } = useRouter();
@@ -20,7 +22,8 @@ const Category = () => {
         dataCategory, 
         isLoadingCategory, 
         isRefetchingCategory,
-
+        refetchCategory,
+        
         currentPage,
         currentLimit, 
         setURL,
@@ -29,6 +32,8 @@ const Category = () => {
         handleSearch,
         handleClearSearch,
     } = useCategory();
+
+    const addCategoryModal = useDisclosure();
 
     useEffect(() => {
         if(isReady) {
@@ -87,11 +92,12 @@ const Category = () => {
                     onChangeSearch={handleSearch}
                     onChangePage={handleChangePage}
                     onClearSearch={handleClearSearch}
-                    onClickButtonTopContent={() => {}}
+                    onClickButtonTopContent={addCategoryModal.onOpen}
                     renderCell={renderCell} 
                     totalPages={dataCategory?.pagination.totalPages}
                     />
             )}
+            <AddCategoryModal refetchCategory={refetchCategory} {...addCategoryModal} />
         </section>
     )
 }

@@ -33,7 +33,7 @@ const DashboardLayoutSidebar = (props: PropTypes) => {
                 alt="logo" 
                 width={180} 
                 height={60} className="mb-6 w-32" 
-                onClick={() => router.push("/")} />
+                onPress={() => router.push("/")} />
             </div>
             <Listbox 
                     items={sidebarItems} 
@@ -58,7 +58,7 @@ const DashboardLayoutSidebar = (props: PropTypes) => {
                 </Listbox>
             </div>
             <div className="flex items-center p-1 ">
-                <Button color="danger" fullWidth variant="light" className="flex justify-start rounded-lg px-2 py-1.5" size="lg" onClick={() => signOut()}><CiLogout /> Logout</Button>
+                <Button color="danger" fullWidth variant="light" className="flex justify-start rounded-lg px-2 py-1.5" size="lg" onPress={() => signOut()}><CiLogout /> Logout</Button>
             </div>
         </div>
     )
