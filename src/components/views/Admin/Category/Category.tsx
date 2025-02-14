@@ -13,9 +13,9 @@ import { Key, ReactNode, useCallback, useEffect } from "react";
 import { CiMenuKebab } from "react-icons/ci";
 import { COLUMN_LISTS_CATEGORY } from "./Category.constant";
 import useCategory from "./useCategory";
-import InputFile from "@/components/ui/InputFile";
 import AddCategoryModal from "./AddCategoryModal";
 import DeleteCategoryModal from "./DeleteCategoryModal";
+import useChangeUrl from "@/hooks/useChangeUrl";
 
 const Category = () => {
     const { push, isReady, query } = useRouter();
@@ -25,27 +25,20 @@ const Category = () => {
         isRefetchingCategory,
         refetchCategory,
         
-        currentPage,
-        currentLimit, 
-        setURL,
-        handleChangeLimit,
-        handleChangePage,
-        handleSearch,
-        handleClearSearch,
-        
         selectedId, 
         setSelectedId,
     } = useCategory();
 
     const addCategoryModal = useDisclosure();
     const deleteCategoryModal = useDisclosure();
+    const { setUrl } = useChangeUrl();
 
     useEffect(() => {
         if(isReady) {
-            setURL();
+          setUrl()
         }
     }, [isReady])
-
+ 
     const renderCell = useCallback(
         (category: Record<string, unknown>, columnKey: Key) => {
             const cellValue = category[columnKey as keyof typeof category];
@@ -66,7 +59,7 @@ const Category = () => {
                             <DropdownMenu>
                                 <DropdownItem 
                                     key="detail-category-button"
-                                    onClick={() => push(`/admin/category/${category._id}`)}
+                                    onPress={() => push(`/admin/category/${category._id}`)}
                                     >Detail Category
                                 </DropdownItem>
                                 <DropdownItem 
@@ -93,15 +86,9 @@ const Category = () => {
                 <DataTable 
                     buttonTopContentLabel="Create Category"
                     columns={COLUMN_LISTS_CATEGORY} 
-                    currentPage={Number(currentPage)}
                     data={dataCategory?.data || []}
                     emptyContent="Category is empty"
                     isLoading={isLoadingCategory || isRefetchingCategory}
-                    limit={String(currentLimit)}
-                    onChangeLimit={handleChangeLimit}
-                    onChangeSearch={handleSearch}
-                    onChangePage={handleChangePage}
-                    onClearSearch={handleClearSearch}
                     onClickButtonTopContent={addCategoryModal.onOpen}
                     renderCell={renderCell} 
                     totalPages={dataCategory?.pagination.totalPages}

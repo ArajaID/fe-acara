@@ -1,6 +1,6 @@
 import { Inter } from "next/font/google";
-import { Button } from "@nextui-org/react";
 import PageHead from "@/components/commons/PageHead";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -10,7 +10,7 @@ export default function Home() {
       className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
     >
       <PageHead />
-      <Button color="success">Button</Button>
+      <Link href="/admin/dashboard">Admin Dashboard</Link>
     </main>
   );
 }
