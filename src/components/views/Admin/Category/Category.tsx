@@ -51,10 +51,10 @@ const Category = () => {
             const cellValue = category[columnKey as keyof typeof category];
 
             switch(columnKey) {
-                // case "icon":
-                //     return (
-                //         <Image src={`${cellValue}`} alt="icon" width={100} height={200} />
-                //     );
+                case "icon":
+                    return (
+                        <Image src={`${cellValue}`} alt="icon" width={100} height={200} />
+                    );
                 case "actions":
                     return (
                         <Dropdown>
