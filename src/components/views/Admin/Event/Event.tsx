@@ -5,8 +5,8 @@ import { useRouter } from "next/router";
 import { Key, ReactNode, useCallback, useEffect } from "react";
 import { COLUMN_LISTS_EVENT } from "./Event.constants";
 import useEvent from "./useEvent";
-// import AddEventModal from "./AddEventModal";
-// import DeleteEventModal from "./DeleteEventModal";
+import AddEventModal from "./AddEventModal";
+//import DeleteEventModal from "./DeleteEventModal";
 import useChangeUrl from "@/hooks/useChangeUrl";
 import DropdownAction from "@/components/commons/DropdownAction";
 
@@ -16,7 +16,7 @@ const Event = () => {
         dataEvents, 
         isLoadingEvents, 
         isRefetchingEvents,
-        refetchEvent,
+        refetchEvents,
         
         selectedId, 
         setSelectedId,
@@ -80,8 +80,11 @@ const Event = () => {
                     totalPages={dataEvents?.pagination.totalPages}
                     />
             )}
-            {/* <AddEventModal refetchEvent={refetchEvent} {...addEventModal} />
-            <DeleteEventModal 
+            <AddEventModal 
+                {...addEventModal} 
+                refetchEvents={refetchEvents} 
+            />
+            {/* <DeleteEventModal 
                 {...deleteEventModal}
                 refetchEvent={refetchEvent} 
                 selectedId={selectedId} 

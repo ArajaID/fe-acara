@@ -116,7 +116,7 @@ const AddCategoryModal = (props: PropTypes) => {
                             color="danger" 
                             variant="flat" 
                             onClick={() => handleOnClose(onClose)} 
-                            disabled={disabledSubmit}>Cancle
+                            disabled={disabledSubmit}>Cancel
                         </Button>
                         <Button 
                             color="danger" 
