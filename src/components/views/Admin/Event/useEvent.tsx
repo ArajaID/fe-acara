@@ -20,9 +20,9 @@ const useEvent = () => {
     };
 
     const {
-        data: dataEvent,
-        isLoading: isLoadingEvent,
-        isRefetching: isRefetchingEvent,
+        data: dataEvents,
+        isLoading: isLoadingEvents,
+        isRefetching: isRefetchingEvents,
         refetch: refetchEvent,
     } = useQuery({
         queryKey: ["Events", currentPage, currentLimit, currentSearch],
@@ -33,9 +33,9 @@ const useEvent = () => {
    
 
     return {
-        dataEvent, 
-        isLoadingEvent,
-        isRefetchingEvent,
+        dataEvents, 
+        isLoadingEvents,
+        isRefetchingEvents,
         refetchEvent,
 
         selectedId, 
