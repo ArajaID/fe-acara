@@ -6,9 +6,9 @@ import { Key, ReactNode, useCallback, useEffect } from "react";
 import { COLUMN_LISTS_EVENT } from "./Event.constants";
 import useEvent from "./useEvent";
 import AddEventModal from "./AddEventModal";
-//import DeleteEventModal from "./DeleteEventModal";
 import useChangeUrl from "@/hooks/useChangeUrl";
 import DropdownAction from "@/components/commons/DropdownAction";
+import DeleteEventModal from "./DeleteEventModal";
 
 const Event = () => {
     const { push, isReady, query } = useRouter();
@@ -84,12 +84,12 @@ const Event = () => {
                 {...addEventModal} 
                 refetchEvents={refetchEvents} 
             />
-            {/* <DeleteEventModal 
+            <DeleteEventModal 
                 {...deleteEventModal}
-                refetchEvent={refetchEvent} 
+                refetchEvent={refetchEvents} 
                 selectedId={selectedId} 
                 setSelectedId={setSelectedId}
-            /> */}
+            />
         </section>
     )
 }
