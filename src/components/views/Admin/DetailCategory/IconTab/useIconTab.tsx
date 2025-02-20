@@ -9,10 +9,10 @@ const schemaUpdateIcon = yup.object().shape({
 
 const useIconTab = () => {
     const { 
-        mutateUploadFile,
         isPendingMutateUploadFile,
-        mutateDeleteFile,
         isPendingMutateDeleteFile,
+        handleUploadFile,
+        handleDeleteFile,
     } = useMediaHandling();
 
     const {
@@ -27,26 +27,23 @@ const useIconTab = () => {
         resolver: yupResolver(schemaUpdateIcon),
     });
 
-   const preview = watchUpdateIcon("icon");
+    const preview = watchUpdateIcon("icon");
+    const fileUrl = getValuesUpdateIcon("icon");
 
-    const handleUploadIcon = (files: FileList, onChange: (files: FileList | undefined) => void) => {
-        if(files.length !== 0) {
-            onChange(files);
-            mutateUploadFile({
-                file: files[0],
-                callback: (fileUrl: string) => {
-                    setValueUpdateIcon("icon", fileUrl)
-                }
-            })
-        }
-    }
+    const handleUploadIcon = (
+        files: FileList, 
+        onChange: (files: FileList | undefined) => void
+    ) => {
+        handleUploadFile(files, onChange, (fileUrl: string | undefined) => {
+            if(fileUrl) {
+                setValueUpdateIcon("icon", fileUrl)
+            }
+        });
+    };
 
     const handleDeleteIcon = (onChange: (files: FileList | undefined) => void) => {
-        const fileUrl = getValuesUpdateIcon("icon");
-        if(typeof fileUrl === "string") {
-            mutateDeleteFile({fileUrl, callback: () => onChange(undefined)})
-        }
-    }
+        handleDeleteFile(fileUrl, () => onChange(undefined))
+    };
 
     return {
         handleDeleteIcon,
