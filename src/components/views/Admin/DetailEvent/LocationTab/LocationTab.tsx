@@ -62,6 +62,9 @@ const LocationTab = (props: PropTypes) => {
         } 
     }, [isSuccessUpdate])
 
+    console.log(dataEvent?.isOnline)
+    console.log(!!dataEvent?.location?.coordinates[0])
+
     return (
         <Card className="w-full p-4 lg:w-1/2">
             <CardHeader className="flex-col items-center">
@@ -72,7 +75,7 @@ const LocationTab = (props: PropTypes) => {
             </CardHeader>
             <CardBody>
                 <form className="flex flex-col gap-4" onSubmit={handleSubmitUpdateLocation(onUpdate)}>
-                <Skeleton isLoaded={!!dataEvent?.isOnline} className="rounded-lg">
+                    <Skeleton isLoaded={!!dataEvent} className="rounded-lg">
                         <Controller 
                             name="isOnline"
                             control={controlUpdateLocation}
