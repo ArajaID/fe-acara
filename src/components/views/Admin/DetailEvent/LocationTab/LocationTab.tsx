@@ -50,6 +50,7 @@ const LocationTab = (props: PropTypes) => {
     useEffect(() => {
         if(dataEvent) {
             setValueUpdateLocation('isOnline', `${dataEvent?.isOnline}`);
+            setValueUpdateLocation('address', `${dataEvent?.location?.address}`);
             setValueUpdateLocation('latitude', `${dataEvent?.location?.coordinates[0]}`);
             setValueUpdateLocation('longitude', `${dataEvent?.location?.coordinates[1]}`);
             setValueUpdateLocation('region', `${dataEvent?.category}`);
@@ -62,9 +63,6 @@ const LocationTab = (props: PropTypes) => {
         } 
     }, [isSuccessUpdate])
 
-    console.log(dataEvent?.isOnline)
-    console.log(!!dataEvent?.location?.coordinates[0])
-
     return (
         <Card className="w-full p-4 lg:w-1/2">
             <CardHeader className="flex-col items-center">
@@ -75,6 +73,24 @@ const LocationTab = (props: PropTypes) => {
             </CardHeader>
             <CardBody>
                 <form className="flex flex-col gap-4" onSubmit={handleSubmitUpdateLocation(onUpdate)}>
+                    <Skeleton isLoaded={!!dataEvent?.location?.address} className="rounded-lg">
+                        <Controller 
+                            name="address"
+                            control={controlUpdateLocation}
+                            render={({field}) => (
+                                <Input 
+                                    {...field}
+                                    label="Address" 
+                                    variant="bordered"
+                                    labelPlacement="outside" 
+                                    type="text"
+                                    isInvalid ={errorsUpdateLocation.address !== undefined}
+                                    errorMessage={errorsUpdateLocation.address?.message}
+                                />
+                            )} 
+                        />
+                    </Skeleton>
+                    
                     <Skeleton isLoaded={!!dataEvent} className="rounded-lg">
                         <Controller 
                             name="isOnline"
@@ -89,7 +105,7 @@ const LocationTab = (props: PropTypes) => {
                                         errorMessage={errorsUpdateLocation.isOnline?.message}
                                         disallowEmptySelection
                                         defaultSelectedKeys={[
-                                            dataEvent.isOnline ? "true" : "false"
+                                            dataEvent?.isOnline ? "true" : "false"
                                         ]}
                                     >
                                         <SelectItem key="true" value="true">Online</SelectItem>
@@ -98,6 +114,7 @@ const LocationTab = (props: PropTypes) => {
                                 )} 
                         />
                     </Skeleton>
+
                     
                     <Skeleton isLoaded={!!dataEvent?.location?.coordinates[0]} className="rounded-lg">
                         <Controller 

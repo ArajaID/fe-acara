@@ -64,7 +64,7 @@ const InfoTab = (props: PropTypes) => {
             <CardHeader className="flex-col items-center">
                 <h1 className="text-xl font-bold w-full">Event Information</h1>
                 <p className="text-sm text-default-400 w-full">
-                    Manage of this event
+                    Manage info of this event
                 </p>
             </CardHeader>
             <CardBody>
@@ -185,7 +185,7 @@ const InfoTab = (props: PropTypes) => {
                                         errorMessage={errorsUpdateInfo.isPublish?.message}
                                         disallowEmptySelection
                                         defaultSelectedKeys={[
-                                            dataEvent.isPublish ? "true" : "false"
+                                            dataEvent?.isPublish ? "true" : "false"
                                         ]}
                                     >
                                         <SelectItem key="true" value="true">Publish</SelectItem>
@@ -209,7 +209,7 @@ const InfoTab = (props: PropTypes) => {
                                         errorMessage={errorsUpdateInfo.isFeatured?.message}
                                         disallowEmptySelection
                                         defaultSelectedKeys={[
-                                            dataEvent.isFeatured ? "true" : "false"
+                                            dataEvent?.isFeatured ? "true" : "false"
                                         ]}
                                     >
                                         <SelectItem key="true" value="true">Yes</SelectItem>
