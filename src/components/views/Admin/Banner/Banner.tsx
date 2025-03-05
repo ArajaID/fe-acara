@@ -5,10 +5,10 @@ import { useRouter } from "next/router";
 import { Key, ReactNode, useCallback, useEffect } from "react";
 import { COLUMN_LISTS_BANNER } from "./Banner.constants";
 import useBanner from "./useBanner";
-// import AddCategoryModal from "./AddCategoryModal";
-// import DeleteCategoryModal from "./DeleteCategoryModal";
 import useChangeUrl from "@/hooks/useChangeUrl";
 import DropdownAction from "@/components/commons/DropdownAction";
+import AddBannerModal from "./AddBannerModal";
+import DeleteBannerModal from "./DeleteBannerModal";
 
 const Banner = () => {
     const { push, isReady, query } = useRouter();
@@ -53,8 +53,11 @@ const Banner = () => {
                 case "actions":
                     return (
                         <DropdownAction 
-                            onPressButtonDetail={() => {}} 
-                            onPressButtonDelete={() => {}}
+                            onPressButtonDetail={() => push(`/admin/banner/${banner._id}`)} 
+                            onPressButtonDelete={() => {
+                                setSelectedId(`${banner._id}`);
+                                deleteBannerModal.onOpen();
+                            }}
                         /> 
                     );
                 default: 
@@ -77,13 +80,13 @@ const Banner = () => {
                     totalPages={dataBanners?.pagination.totalPages}
                     />
             )}
-            {/* <AddBannerModal refetchBanner={refetchBanners} {...addBannerModal} />
+            <AddBannerModal refetchBanner={refetchBanners} {...addBannerModal} />
             <DeleteBannerModal 
                 {...deleteBannerModal}
-                refetchBanners={refetchBanners} 
+                refetchBanner={refetchBanners} 
                 selectedId={selectedId} 
                 setSelectedId={setSelectedId}
-            /> */}
+            />
         </section>
     )
 }

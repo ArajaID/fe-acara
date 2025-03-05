@@ -27,12 +27,12 @@ const DropdownAction = (props: PropTypes) => {
         </DropdownTrigger>
         <DropdownMenu>
             <DropdownItem 
-                key="detail-event-button"
+                key="detail-button"
                 onPress={onPressButtonDetail}
                 >Detail
             </DropdownItem>
             <DropdownItem 
-                key="delete-event"
+                key="delete-button"
                 className="text-danger-500"
                 onPress={onPressButtonDelete}
                 >Delete

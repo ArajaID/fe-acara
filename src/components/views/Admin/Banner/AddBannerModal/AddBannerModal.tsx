@@ -6,10 +6,11 @@ import {
     ModalContent, 
     ModalFooter, 
     ModalHeader, 
-    Spinner, 
-    Textarea
+    Select, 
+    SelectItem, 
+    Spinner,
 } from "@nextui-org/react";
-import useAddCategoryModal from "./useAddCategoryModal";
+import useAddBannerModal from "./useAddBannerModal";
 import { Controller } from "react-hook-form";
 import InputFile from "@/components/ui/InputFile";
 import { useEffect } from "react";
@@ -17,36 +18,36 @@ import { useEffect } from "react";
 interface PropTypes {
     isOpen: boolean,
     onClose: () => void,
-    refetchCategory: () => void,
+    refetchBanner: () => void,
     onOpenChange: () => void,
 }
-const AddCategoryModal = (props: PropTypes) => {
-    const { isOpen, onClose, refetchCategory, onOpenChange } = props;
+const AddBannerModal = (props: PropTypes) => {
+    const { isOpen, onClose, refetchBanner, onOpenChange } = props;
    
     const {      
         control,
         errors,
         handleSubmitForm,
-        handleAddCategory,
-        isPendingMutateAddCategory,
-        isSuccessMutateAddCategory,
+        handleAddBanner,
+        isPendingMutateAddBanner,
+        isSuccessMutateAddBanner,
 
         preview,
-        handleUploadIcon,
+        handleUploadImage,
         isPendingMutateUploadFile,
-        handleDeleteIcon,
+        handleDeleteImage,
         isPendingMutateDeleteFile,
         handleOnClose,
-    } = useAddCategoryModal();
+    } = useAddBannerModal();
 
     useEffect(() => {
-        if(isSuccessMutateAddCategory) {
+        if(isSuccessMutateAddBanner) {
             onClose();
-            refetchCategory();
+            refetchBanner();
         }
-    }, [isSuccessMutateAddCategory]);
+    }, [isSuccessMutateAddBanner]);
 
-    const disabledSubmit = isPendingMutateAddCategory || isPendingMutateUploadFile || isPendingMutateDeleteFile;
+    const disabledSubmit = isPendingMutateAddBanner || isPendingMutateUploadFile || isPendingMutateDeleteFile;
 
     return (
         <Modal 
@@ -56,54 +57,58 @@ const AddCategoryModal = (props: PropTypes) => {
             scrollBehavior="inside"
             onClose={() => handleOnClose(onClose)}
         >
-            <form onSubmit={handleSubmitForm(handleAddCategory)}>
+            <form onSubmit={handleSubmitForm(handleAddBanner)}>
                 <ModalContent className="m-4">
-                    <ModalHeader>Add Category</ModalHeader>
+                    <ModalHeader>Add Banner</ModalHeader>
                     <ModalBody>
                         <div className="flex flex-col gap-2">
                             <p className="text-sm font-bold">Information</p>
                         <Controller 
-                          name="name"
+                          name="title"
                           control={control}
                           render={({field}) => (
                                 <Input 
                                     {...field}
                                     autoFocus 
-                                    label="Name" 
+                                    label="Title" 
                                     variant="bordered" 
                                     type="text"
-                                    isInvalid ={errors.name !== undefined}
-                                    errorMessage={errors.name?.message}
+                                    isInvalid ={errors.title !== undefined}
+                                    errorMessage={errors.title?.message}
                                 />
                             )} 
                         />
 
                         <Controller 
-                          name="description"
-                          control={control}
-                          render={({field}) => (
-                                <Textarea 
-                                    {...field}
-                                    label="Description" 
-                                    variant="bordered" 
-                                    isInvalid ={errors.description !== undefined}
-                                    errorMessage={errors.description?.message}
-                                    className="mb-2"
-                                />
-                            )} 
+                            name="isShow"
+                            control={control}
+                            render={({field}) => (
+                                    <Select 
+                                        {...field} 
+                                        label="Status" 
+                                        variant="bordered" 
+                                        isInvalid ={errors.isShow !== undefined}
+                                        errorMessage={errors.isShow?.message}
+                                        disallowEmptySelection
+                                    >
+                                        <SelectItem key="true" value="true">Published</SelectItem>
+                                        <SelectItem key="false" value="false">Not Published</SelectItem>
+                                    </Select>
+                                )} 
                         />
-                        <p className="text-sm font-bold">Icon</p>
+
+                        <p className="text-sm font-bold">Image</p>
                         <Controller 
-                          name="icon"
+                          name="image"
                           control={control}
                           render={({field: {onChange, value, ...field}}) => (
                                 <InputFile {...field} 
-                                    onDelete={() => handleDeleteIcon(onChange)}
-                                    onUpload={(files) => handleUploadIcon(files, onChange)}
+                                    onDelete={() => handleDeleteImage(onChange)}
+                                    onUpload={(files) => handleUploadImage(files, onChange)}
                                     isUploading={isPendingMutateUploadFile}
                                     isDeleting={isPendingMutateDeleteFile}
-                                    isInvalid={errors.icon !== undefined}
-                                    errorMessage={errors.icon?.message}
+                                    isInvalid={errors.image !== undefined}
+                                    errorMessage={errors.image?.message}
                                     isDropable
                                     preview={typeof preview === 'string' ? preview : ""}
                                 />
@@ -121,9 +126,9 @@ const AddCategoryModal = (props: PropTypes) => {
                         <Button 
                             color="danger" 
                             type="submit"
-                            disabled={disabledSubmit}>{isPendingMutateAddCategory ? (
+                            disabled={disabledSubmit}>{isPendingMutateAddBanner ? (
                                 <Spinner size="sm" color="white" />
-                            ) : ("Create Category")}
+                            ) : ("Create Banner")}
                         </Button>
                     </ModalFooter>
                 </ModalContent>
@@ -132,4 +137,4 @@ const AddCategoryModal = (props: PropTypes) => {
     )
 }
 
-export default AddCategoryModal;
+export default AddBannerModal;
