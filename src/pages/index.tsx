@@ -1,16 +1,12 @@
-import { Inter } from "next/font/google";
-import PageHead from "@/components/commons/PageHead";
-import Link from "next/link";
+import LandingPageLayout from "@/components/layouts/LandingPageLayout";
+import Home from "@/components/views/Home";
 
-const inter = Inter({ subsets: ["latin"] });
-
-export default function Home() {
+const HomePage = () => {
   return (
-    <main
-      className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
-    >
-      <PageHead />
-      <Link href="/admin/dashboard">Admin Dashboard</Link>
-    </main>
+    <LandingPageLayout title="Home">
+      <Home />
+    </LandingPageLayout>
   );
 }
+
+export default HomePage;

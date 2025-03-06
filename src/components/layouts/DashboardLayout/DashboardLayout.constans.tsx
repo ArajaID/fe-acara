@@ -1,7 +1,6 @@
 import { 
     CiBookmark, 
-    CiGrid41, 
-    CiSettings, 
+    CiGrid41,
     CiShoppingTag, 
     CiViewList, 
     CiWallet 
@@ -46,6 +45,12 @@ const SIDEBAR_ADMIN = [
         label: "Banner",
         href: "/admin/banner",
         icon: <CiBookmark />
+    },
+    {
+        key: "transaction",
+        label: "Transaction",
+        href: "/admin/transaction",
+        icon: <CiWallet />
     },
 ]
 
