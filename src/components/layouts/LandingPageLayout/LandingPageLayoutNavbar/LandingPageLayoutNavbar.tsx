@@ -33,38 +33,36 @@ const LandingPageLayoutNavbar = () => {
     return (
         <Navbar 
             maxWidth="full" 
-            className="max-w-screen-3xl 3xl:container" 
             isBordered 
             isBlurred={false}
             shouldBlockScroll
         >
-           <div className="flex items-center gap-8">
-            <NavbarBrand as={Link} href="/">
-                <Image 
-                    src="/images/general/logo.svg" 
-                    alt="logo" 
-                    width={100} 
-                    height={50} 
-                    className="cursor-pointer"
-                />
-            </NavbarBrand>
-            <NavbarContent className="hidden lg:flex">
-                {NAV_ITEMS.map((item) => (
-                    <NavbarItem 
-                        key={`nav-${item.label}`} 
-                        as={Link} 
-                        href={item.href}
-                        className={cn(
-                            "font-medium text-default-700 hover:text-danger", {
-                                "font-bold text-danger-500": router.pathname === item.href,
-                            })}
-                    > 
-                        {item.label}
-                    </NavbarItem>
-                ))}
-            </NavbarContent>
-           
-           </div>
+            <div className="flex items-center gap-8">
+                <NavbarBrand as={Link} href="/">
+                    <Image 
+                        src="/images/general/logo.svg" 
+                        alt="logo" 
+                        width={100} 
+                        height={50} 
+                        className="cursor-pointer"
+                    />
+                </NavbarBrand>
+                <NavbarContent className="hidden lg:flex">
+                    {NAV_ITEMS.map((item) => (
+                        <NavbarItem 
+                            key={`nav-${item.label}`} 
+                            as={Link} 
+                            href={item.href}
+                            className={cn(
+                                "font-medium text-default-700 hover:text-danger", {
+                                    "font-bold text-danger-500": router.pathname === item.href,
+                                })}
+                        > 
+                            {item.label}
+                        </NavbarItem>
+                    ))}
+                </NavbarContent>
+            </div>
             <NavbarContent justify="end">
                 <NavbarMenuToggle className="lg:hidden " />
 
