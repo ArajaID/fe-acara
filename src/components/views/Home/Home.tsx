@@ -29,7 +29,9 @@ const Home = () => {
                 isLoading={isLoadingFeaturedEvents}
             />
 
-            <Skeleton isLoaded={!isLoadingBanners} className="mb-16 w-full h-[20vw] rounded-2xl">
+            <Skeleton 
+                isLoaded={!isLoadingBanners} 
+                className="mx-6 mb-6 h-[25vw] rounded-2xl lg:mx-0 lg:mb-16">
                 <Image 
                     src={dataBanners && dataBanners?.data[0].image} 
                     alt="banner" 
