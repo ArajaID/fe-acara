@@ -21,29 +21,41 @@ const useHome = () => {
         enabled: true
     });
 
-    const getFeaturedEvents = async () => {
-        let params = `limit=${LIMIT_EVENT}&page=${PAGE_DEFAULT}&isPublish=true&isFeatured=true`;
-   
+    const getEvents = async (params: string) => {   
         const res = await eventServices.getEvents(params);
         const {data} = res;
         return data;
     };
+
+    const currentEventQuery = `limit=${LIMIT_EVENT}&page=${PAGE_DEFAULT}&isPublish=true`
 
     const {
         data: dataFeaturedEvents,
         isLoading: isLoadingFeaturedEvents,
     } = useQuery({
         queryKey: ["FeaturedEvents"],
-        queryFn: getFeaturedEvents,
+        queryFn: () => getEvents(
+            `${currentEventQuery}&isFeatured=true`
+        ),
         enabled: true
     });
 
+    const {
+        data: dataLatestEvents,
+        isLoading: isLoadingLatestEvents,
+    } = useQuery({
+        queryKey: ["LatestEvents"],
+        queryFn: () => getEvents(currentEventQuery),
+        enabled: true
+    });
 
     return {
         dataBanners, 
         isLoadingBanners,
         dataFeaturedEvents,
         isLoadingFeaturedEvents,
+        dataLatestEvents,
+        isLoadingLatestEvents,
     }
 }
 

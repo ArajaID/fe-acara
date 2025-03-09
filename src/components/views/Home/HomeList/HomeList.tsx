@@ -19,13 +19,16 @@ const HomeList = (props: PropTypes) => {
                     See More
                 </Link>
             </div>
-            <div className="grid auto-cols[20rem] grid-flow-col gap-6 overflow-x-auto py-2 lg:grid-cols-4 lg:px-1">
+            <div className="grid auto-cols-[20rem] grid-flow-col gap-6 overflow-x-auto py-2 pb-8 lg:grid-cols-4 lg:px-1">
                 {!isLoading ? events?.map((event) => (
-                    <CardEvent event={event} key={`card-event-${event._id}`} />
+                    <CardEvent event={event} key={`card-event-${event._id}`} className="first:ml-6 last:mr-6 lg:first:ml-0 lg:last:mr-0"/>
                 )) : (
                     Array.from({length: 4}).map((_, index) => (
-                        <></>
-                        // <CardEventSkeleton key={`event-skeleton-${index}`}></CardEventSkeleton>
+                      <CardEvent 
+                        key={`card-event-loading-${index}`} 
+                        isLoading={isLoading}
+                        className="first:ml-6 last:mr-6 lg:first:ml-0 lg:last:mr-0"
+                      />
                     ))
                 )}
             </div>

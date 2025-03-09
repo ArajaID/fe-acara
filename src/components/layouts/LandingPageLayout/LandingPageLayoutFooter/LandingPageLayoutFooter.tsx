@@ -4,7 +4,7 @@ import { NAV_ITEMS, SOCIAL_ITEMS } from "../LandingPageLayout.constants";
 
 const LandingPageLayoutFooter = () => {
     return (
-        <div className="flex flex-col bg-slate-400 items-center justify-between px-6 py-10 text-center lg:flex-row lg:text-left xl:p-20">
+        <div className="flex flex-col bg-slate-800 items-center justify-between px-6 py-10 text-center lg:flex-row lg:text-left xl:p-20">
             <Image 
                 src="/images/general/logo.svg" 
                 alt="logo" 
