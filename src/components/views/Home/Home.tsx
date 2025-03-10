@@ -1,8 +1,9 @@
 import { Skeleton } from "@nextui-org/react";
-import HomeList from "./HomeList";
 import HomeSlider from "./HomeSlider"
 import useHome from "./useHome";
 import Image from "next/image";
+import HomeEventList from "./HomeEventList";
+import HomeCategoryList from "./HomeCategoryList";
 
 const Home = () => {
     const { 
@@ -12,9 +13,9 @@ const Home = () => {
         isLoadingFeaturedEvents,
         dataLatestEvents,
         isLoadingLatestEvents,
+        dataCategories, 
+        isLoadingCategories, 
     } = useHome();
-
-    console.log(dataFeaturedEvents?.data)
 
     return (
         <div>
@@ -23,7 +24,7 @@ const Home = () => {
                 isLoadingBanners={isLoadingBanners} 
             />
 
-            <HomeList 
+            <HomeEventList 
                 title="Featured Event" 
                 events={dataFeaturedEvents?.data} 
                 isLoading={isLoadingFeaturedEvents}
@@ -41,10 +42,15 @@ const Home = () => {
                 />
             </Skeleton>
 
-            <HomeList 
+            <HomeEventList 
                 title="Latest Event" 
                 events={dataLatestEvents?.data} 
                 isLoading={isLoadingLatestEvents}
+            />
+
+            <HomeCategoryList 
+                categories={dataCategories?.data} 
+                isLoading={isLoadingCategories}
             />
         </div>
     )
