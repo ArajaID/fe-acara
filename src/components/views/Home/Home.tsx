@@ -28,6 +28,7 @@ const Home = () => {
                 title="Featured Event" 
                 events={dataFeaturedEvents?.data} 
                 isLoading={isLoadingFeaturedEvents}
+                urlMore="/event?isFeatured=true"
             />
 
             <Skeleton 
@@ -46,6 +47,7 @@ const Home = () => {
                 title="Latest Event" 
                 events={dataLatestEvents?.data} 
                 isLoading={isLoadingLatestEvents}
+                urlMore="/event"
             />
 
             <HomeCategoryList 
