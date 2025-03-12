@@ -62,21 +62,22 @@ const LandingPageLayoutNavbar = () => {
                 <NavbarContent className="hidden lg:flex">
                     {NAV_ITEMS.map((item) => (
                         <NavbarItem 
-                            key={`nav-${item.label}`} 
-                            as={Link} 
-                            href={item.href}
-                            className={cn(
+                            key={`nav-${item.label}`}                           
+                        > 
+                            <Link 
+                                href={item.href}  
+                                className={cn(
                                 "font-medium text-default-700 hover:text-danger", {
                                     "font-bold text-danger-500": router.pathname === item.href,
-                                })}
-                        > 
-                            {item.label}
+                                })}>
+                                {item.label}
+                            </Link>
                         </NavbarItem>
                     ))}
                 </NavbarContent>
             </div>
             <NavbarContent justify="end">
-                <NavbarMenuToggle className="lg:hidden " />
+                <NavbarMenuToggle className="lg:hidden" />
 
                 <NavbarItem className="hidden lg:flex lg:relative">
                     <Input 
@@ -167,7 +168,11 @@ const LandingPageLayoutNavbar = () => {
                         <NavbarMenuItem 
                             key={`nav-${item.label}`}
                         >
-                            <Link href={item.href} className={cn("font-medium text-default-700 hover:text-danger", {"font-bold text-danger": router.pathname === item.href})}>{item.label}</Link>
+                            <Link 
+                                href={item.href} 
+                                className={cn("font-medium text-default-700 hover:text-danger", {"font-bold text-danger": router.pathname === item.href})}
+                                >{item.label}
+                            </Link>
                         </NavbarMenuItem>
                     ))}
                     {session.status === "authenticated" ? (
