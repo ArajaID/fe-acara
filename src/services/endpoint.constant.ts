@@ -4,6 +4,7 @@ const endpoint = {
     MEDIA: '/media',
     EVENT: '/events',
     REGION: '/regions',
+    ORDER: '/orders',
     TICKET: '/tickets',
     BANNER: '/banners',
 }
