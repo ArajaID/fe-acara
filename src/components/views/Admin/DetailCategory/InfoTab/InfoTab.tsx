@@ -1,5 +1,5 @@
 import { ICategory } from "@/types/Category";
-import { Button, Card, CardBody, CardHeader, Input, Skeleton, Spinner, Textarea } from "@nextui-org/react"
+import { Button, Card, CardBody, CardHeader, Input, Skeleton, Spinner, Textarea } from "@heroui/react"
 import useInfoTab from "./useInfoTab";
 import { Controller } from "react-hook-form";
 import { useEffect } from "react";

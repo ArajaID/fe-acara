@@ -1,5 +1,5 @@
 import DataTable from "@/components/ui/DataTable/DataTable";
-import { Chip } from "@nextui-org/react";
+import { Chip } from "@heroui/react";
 import { useRouter } from "next/router";
 import { Key, ReactNode, useCallback, useEffect } from "react";
 import { COLUMN_LISTS_TRANSACTION } from "./Transaction.constants";

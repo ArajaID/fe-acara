@@ -8,7 +8,7 @@ import {
     ModalHeader, 
     Spinner, 
     Textarea
-} from "@nextui-org/react";
+} from "@heroui/react";
 import useAddCategoryModal from "./useAddCategoryModal";
 import { Controller } from "react-hook-form";
 import InputFile from "@/components/ui/InputFile";

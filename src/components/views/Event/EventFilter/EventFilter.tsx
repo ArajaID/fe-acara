@@ -1,6 +1,6 @@
 import { Controller } from "react-hook-form";
 import useEventFilter from "./useEventFilter";
-import { Autocomplete, AutocompleteItem, Select, SelectItem, Skeleton } from "@nextui-org/react";
+import { Autocomplete, AutocompleteItem, Select, SelectItem, Skeleton } from "@heroui/react";
 import { ICategory } from "@/types/Category";
 import useChangeUrl from "@/hooks/useChangeUrl";
 import { Fragment, useEffect } from "react";

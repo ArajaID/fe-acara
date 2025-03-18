@@ -1,7 +1,7 @@
 import DropdownAction from "@/components/commons/DropdownAction";
 import DataTable from "@/components/ui/DataTable";
 import { convertIDR } from "@/utils/currency";
-import { Button, Card, CardBody, CardHeader, useDisclosure } from "@nextui-org/react";
+import { Button, Card, CardBody, CardHeader, useDisclosure } from "@heroui/react";
 import { Fragment, Key, ReactNode, useCallback, useState } from "react";
 import { COLUMN_LISTS_TICKET } from "./TicketTab.constant";
 import useTicketTab from "./useTicketTab";

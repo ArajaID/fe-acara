@@ -1,6 +1,6 @@
 import categoryServices from "@/services/category.service";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { DateValue } from "@nextui-org/react";
+import { DateValue } from "@heroui/react";
 import { useQuery } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import * as yup from "yup"

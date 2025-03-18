@@ -18,7 +18,7 @@ import {
     Listbox,
     ListboxItem,
     Spinner,
-} from "@nextui-org/react";
+} from "@heroui/react";
 import Image from "next/image";
 import { BUTTON_ITEMS, NAV_ITEMS } from "../LandingPageLayout.constants";
 import { cn } from "@/utils/cn";

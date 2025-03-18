@@ -5,7 +5,7 @@ import {
     CardHeader,
     Input, 
     Spinner, 
-} from "@nextui-org/react"
+} from "@heroui/react"
 import useSecurityTab from "./useSecurityTab";
 import { Controller } from "react-hook-form";
 

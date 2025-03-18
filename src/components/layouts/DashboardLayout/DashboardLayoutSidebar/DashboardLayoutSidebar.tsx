@@ -1,5 +1,5 @@
 import { cn } from "@/utils/cn";
-import { Button, Listbox, ListboxItem } from "@nextui-org/react";
+import { Button, Listbox, ListboxItem } from "@heroui/react";
 import { signOut } from "next-auth/react";
 import Image from "next/image";
 import { useRouter } from "next/router";

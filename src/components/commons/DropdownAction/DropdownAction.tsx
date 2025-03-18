@@ -4,7 +4,7 @@ import {
     DropdownItem, 
     DropdownMenu, 
     DropdownTrigger 
-} from "@nextui-org/react";
+} from "@heroui/react";
 import { CiMenuKebab } from "react-icons/ci";
 
 interface PropTypes {

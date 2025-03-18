@@ -1,6 +1,6 @@
 import { LIMIT_LISTS } from "@/constants/list.constants";
 import useChangeUrl from "@/hooks/useChangeUrl";
-import { Pagination, Select, SelectItem } from "@nextui-org/react";
+import { Pagination, Select, SelectItem } from "@heroui/react";
 
 interface PropTypes {
     totalPages: number,

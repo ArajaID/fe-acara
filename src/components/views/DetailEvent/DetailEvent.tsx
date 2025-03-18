@@ -1,4 +1,4 @@
-import { BreadcrumbItem, Breadcrumbs, Skeleton, Tab, Tabs } from "@nextui-org/react";
+import { BreadcrumbItem, Breadcrumbs, Skeleton, Tab, Tabs } from "@heroui/react";
 import useDetailEvent from "./useDetailEvent";
 import { FaClock, FaLocationDot } from "react-icons/fa6";
 import { convertTime } from "@/utils/date";
@@ -28,13 +28,13 @@ const DetailEvent = () => {
                 data-client-key={environment.MIDTRANS_CLIENT_KEY}
                 strategy="lazyOnload" 
             />
-
+          
             <Skeleton isLoaded={!!dataEvent?.name} className="h-6 w-1/4 rounded-lg">
                 <Breadcrumbs>
                     <BreadcrumbItem href="/">Home</BreadcrumbItem>
                     <BreadcrumbItem href="/event">Event</BreadcrumbItem>
                     <BreadcrumbItem>{dataEvent?.name}</BreadcrumbItem>
-                </Breadcrumbs>
+                </Breadcrumbs>     
             </Skeleton>
             
             <section className="mt-4 flex flex-col gap-10 lg:flex-row">
