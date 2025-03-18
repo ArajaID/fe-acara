@@ -14,7 +14,7 @@ const useEvent = () => {
     } = useChangeUrl()
     
     const getEvents = async () => {
-        let params = `limit=${currentLimit}&page=${currentPage}&category=${currentCategory}&isOnline=${currentIsOnline}&isFeatured=${currentIsFeatured}`;
+        let params = `limit=${currentLimit}&page=${currentPage}&isPublish=true&category=${currentCategory}&isOnline=${currentIsOnline}&isFeatured=${currentIsFeatured}`;
 
         const res = await eventServices.getEvents(params);
         const {data} = res;

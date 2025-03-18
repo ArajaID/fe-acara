@@ -131,7 +131,7 @@ const LandingPageLayoutNavbar = () => {
                             <DropdownMenu>
                                 <DropdownItem 
                                     key="admin" 
-                                    href="/admin/dashboard"
+                                    href="/admin/event"
                                     startContent={<CiSettings />} 
                                     showDivider
                                     className={cn({
@@ -179,7 +179,7 @@ const LandingPageLayoutNavbar = () => {
                         <Fragment>
                             <NavbarMenuItem>
                                 <Link 
-                                    href="/admin/dashboard" 
+                                    href="/admin/event" 
                                     className={cn("font-medium text-default-700 hover:text-danger", {"hidden": dataProfile?.role !== "admin"})}
                                     >Admin
                                 </Link>
