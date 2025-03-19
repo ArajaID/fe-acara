@@ -1,11 +1,12 @@
 import { cn } from "@/utils/cn";
-import { Button, Listbox, ListboxItem } from "@heroui/react";
+import { Avatar, Button, Divider, Listbox, ListboxItem } from "@heroui/react";
 import { signOut } from "next-auth/react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { CiLogout } from "react-icons/ci";
 import { JSX } from "react";
 import Link from "next/link";
+import useLandingPageLayoutNavbar from "../../LandingPageLayout/LandingPageLayoutNavbar/useLandingPageLayoutNavbar";
 
 interface SidebarItem {
     key: string;
@@ -22,19 +23,33 @@ interface PropTypes {
 const DashboardLayoutSidebar = (props: PropTypes) => {
     const { sidebarItems, isOpen } = props;
     const router = useRouter();
+    const {dataProfile} = useLandingPageLayoutNavbar();
+
     return (
         <div className={cn("fixed lg:relative z-50 flex h-screen w-full max-w-[300px] -translate-x-full flex-col justify-between border-r-1 border-default-200 bg-white px-4 py-6 transition-all lg:translate-x-0", 
                 {"translate-x-0" : isOpen}
         )}>
             <div>
-                <div className="flex justify-center w-full">
+                <div className="flex justify-center w-full flex-col items-center mb-2">
                     <Image 
                     src="/images/general/logo.svg" 
                     alt="logo" 
                     width={180} 
-                    height={60} className="mb-6 w-32" 
+                    height={60} className="mb-3 w-32" 
                     onClick={() => router.push("/")} />
+
+                    <Avatar src={dataProfile?.profilePicture} 
+                        className="cursor-pointer w-12 h-12 mb-2"
+                        showFallback 
+                        name={dataProfile?.fullName} 
+                    />
+
+                    <h2 className="text-md font-semibold text-foreground-600">Halo, {dataProfile?.fullName}</h2>
+                    <p className="text-md italic text-foreground-600 capitalize">({`${dataProfile?.role}`})</p>
                 </div>
+
+                <Divider className="mb-2" />
+
                 <Listbox 
                     items={sidebarItems} 
                     variant="solid" 
